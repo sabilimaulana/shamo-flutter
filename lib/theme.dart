@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Color primaryColor = Color(0xff6C5ECF);
-Color secondaryColor = Color(0xff38ABBE);
-Color alertColor = Color(0xffED6363);
-Color priceColor = Color(0xff2C96F1);
-Color backgroundColor1 = Color(0xff1F1D28);
-Color backgroundColor2 = Color(0xff282937);
-Color backgroundColor3 = Color(0xff242231);
-Color primaryTextColor = Color(0xffe1e1e1);
-Color secondaryTextColor = Color(0xff999999);
+Color primaryColor = const Color(0xff6C5ECF);
+Color secondaryColor = const Color(0xff38ABBE);
+Color alertColor = const Color(0xffED6363);
+Color priceColor = const Color(0xff2C96F1);
+Color backgroundColor1 = const Color(0xff1F1D28);
+Color backgroundColor2 = const Color(0xff282937);
+Color backgroundColor3 = const Color(0xff242231);
+Color primaryTextColor = const Color(0xffe1e1e1);
+Color secondaryTextColor = const Color(0xff999999);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
