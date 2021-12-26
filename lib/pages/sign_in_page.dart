@@ -74,16 +74,114 @@ class SignInPage extends StatelessWidget {
     );
   }
 
+  Widget passwordInput() {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Password',
+            style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Container(
+            height: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: backgroundColor2,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Center(
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/icon_password.png',
+                    width: 17,
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      style: primaryTextStyle,
+                      obscureText: true,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Your Password',
+                        hintStyle: subtitleTextStyle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget signInButton() {
+    return Container(
+      height: 50,
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 30),
+      child: TextButton(
+        onPressed: () => {},
+        style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12))),
+        child: Text(
+          'Sign In',
+          style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+        ),
+      ),
+    );
+  }
+
+  Widget footer() {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Don't have an account?",
+            style: subtitleTextStyle.copyWith(fontSize: 12),
+          ),
+          TextButton(
+              onPressed: () => {},
+              child: Text(
+                'Sign Up',
+                style:
+                    purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
+              ))
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor1,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: defaultMargin),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [header(), emailInput()],
+            children: [
+              header(),
+              emailInput(),
+              passwordInput(),
+              signInButton(),
+              const Spacer(),
+              footer()
+            ],
           ),
         ),
       ),
