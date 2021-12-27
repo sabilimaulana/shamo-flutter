@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/product_card.dart';
+import 'package:shamo/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -164,6 +165,27 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.only(right: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: subtitleColor,
+                  ),
+                  color: transparentColor,
+                ),
+                child: Text(
+                  'Football',
+                  style: subtitleTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -203,12 +225,44 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget newArrivalsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          right: defaultMargin,
+          left: defaultMargin,
+        ),
+        child: Text(
+          'New Arrivals',
+          style: primaryTextStyle.copyWith(fontSize: 22, fontWeight: semiBold),
+        ),
+      );
+    }
+
+    Widget newArrival() {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 14,
+        ),
+        child: Column(
+          children: const [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
         categories(),
         popularProductsTitle(),
         popularProducts(),
+        newArrivalsTitle(),
+        newArrival()
       ],
     );
   }
