@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shamo/theme.dart';
+import 'package:shamo/widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -169,8 +170,46 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget popularProductsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          right: defaultMargin,
+          left: defaultMargin,
+        ),
+        child: Text(
+          'Popular Products',
+          style: primaryTextStyle.copyWith(fontSize: 22, fontWeight: semiBold),
+        ),
+      );
+    }
+
+    Widget popularProducts() {
+      return Container(
+        margin: const EdgeInsets.only(top: 14),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SizedBox(
+                width: defaultMargin,
+              ),
+              const ProductCard(),
+              const ProductCard(),
+              const ProductCard(),
+            ],
+          ),
+        ),
+      );
+    }
+
     return ListView(
-      children: [header(), categories()],
+      children: [
+        header(),
+        categories(),
+        popularProductsTitle(),
+        popularProducts(),
+      ],
     );
   }
 }
