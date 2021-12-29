@@ -55,7 +55,7 @@ class ChatPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 44,
                 child: TextButton(
                   onPressed: () => {},
