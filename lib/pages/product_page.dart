@@ -50,7 +50,7 @@ class _ProductPageState extends State<ProductPage> {
       return Container(
         width: 54,
         height: 54,
-        margin: EdgeInsets.only(right: 16),
+        margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(imageUrl),
@@ -262,6 +262,46 @@ class _ProductPageState extends State<ProductPage> {
                 ],
               ),
             )
+            //  NOTE : BUTTONS
+            ,
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.all(defaultMargin),
+              child: Row(
+                children: [
+                  Container(
+                    width: 54,
+                    height: 54,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/button_chat.png'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: 54,
+                      child: TextButton(
+                        onPressed: () => {},
+                        style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: primaryColor),
+                        child: Text(
+                          'Add to Cart',
+                          style: primaryTextStyle.copyWith(
+                              fontSize: 16, fontWeight: semiBold),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       );
