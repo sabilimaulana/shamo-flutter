@@ -121,9 +121,11 @@ class _ProductPageState extends State<ProductPage> {
       return Container(
         margin: const EdgeInsets.only(top: 17),
         width: double.infinity,
+        constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height - 310 - 20),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(4),
+            top: Radius.circular(24),
           ),
           color: backgroundColor1,
         ),
@@ -261,9 +263,8 @@ class _ProductPageState extends State<ProductPage> {
                   )
                 ],
               ),
-            )
+            ),
             //  NOTE : BUTTONS
-            ,
             Container(
               width: double.infinity,
               margin: EdgeInsets.all(defaultMargin),
