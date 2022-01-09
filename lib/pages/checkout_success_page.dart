@@ -24,7 +24,7 @@ class CheckoutSuccessPage extends StatelessWidget {
               'assets/icon_empty_cart.png',
               width: 80,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -34,7 +34,7 @@ class CheckoutSuccessPage extends StatelessWidget {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Text(
