@@ -6,13 +6,14 @@ class UserModel {
   late String profilePhotoUrl;
   late String token;
 
-  UserModel(
-      {this.id = 0,
-      this.name = '',
-      this.email = '',
-      this.username = '',
-      this.profilePhotoUrl = '',
-      this.token = ''});
+  UserModel({
+    this.id = 0,
+    this.name = '',
+    this.email = '',
+    this.username = '',
+    this.profilePhotoUrl = '',
+    this.token = '',
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -20,7 +21,7 @@ class UserModel {
     email = json['email'];
     username = json['username'];
     profilePhotoUrl = json['profile_photo_url'];
-    token = json['token'];
+    token = '';
   }
 
   Map<String, dynamic> toJson() {

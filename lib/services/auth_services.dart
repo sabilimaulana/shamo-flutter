@@ -5,12 +5,13 @@ import 'package:http/http.dart' as http;
 class AuthService {
   String baseUrl = 'https://shamo-backend.buildwithangga.id/api';
 
-  Future<UserModel> register(
-      {required String name,
-      required String username,
-      required String email,
-      required String password}) async {
-    Uri url = '$baseUrl/register' as Uri;
+  Future<UserModel> register({
+    required String name,
+    required String username,
+    required String email,
+    required String password,
+  }) async {
+    String url = '$baseUrl/register';
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
       'name': name,
@@ -19,13 +20,13 @@ class AuthService {
       'password': password
     });
 
-    var response = await http.post(url, headers: headers, body: body);
+    var response =
+        await http.post(Uri.parse(url), headers: headers, body: body);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
       user.token = 'Bearer ' + data['access_token'];
-
       return user;
     } else {
       throw Exception('Gagal Register');
