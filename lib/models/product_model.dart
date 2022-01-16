@@ -29,7 +29,7 @@ class ProductModel {
     name = json['name'];
     price = double.parse(json['price'].toString());
     description = json['description'];
-    tags = json['tags'];
+    tags = json['tags'] ?? '';
     category = CategoryModel.fromJson(json['category']);
     createdAt = DateTime.parse(json['created_at']);
     updatedAt = DateTime.parse(json['updated_at']);
