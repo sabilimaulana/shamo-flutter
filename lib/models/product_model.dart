@@ -18,10 +18,6 @@ class ProductModel {
     this.price = 0,
     this.description = '',
     this.tags = '',
-    required this.category,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.galleries,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
@@ -52,3 +48,5 @@ class ProductModel {
     };
   }
 }
+
+class UninitializedProductModel extends ProductModel {}
