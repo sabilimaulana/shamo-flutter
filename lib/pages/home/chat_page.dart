@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/models/message_model.dart';
+import 'package:shamo/providers/user_provider.dart';
+import 'package:shamo/services/message_services.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/chat_tile.dart';
 
@@ -7,6 +11,8 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -85,27 +91,37 @@ class ChatPage extends StatelessWidget {
     }
 
     Widget content() {
-      return Expanded(
-        child: Container(
-          width: double.infinity,
-          color: backgroundColor3,
-          child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-            ),
-            children: const [
-              SizedBox(
-                height: 13,
-              ),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-            ],
+      return StreamBuilder<List<MessageModel>>(
+          stream: MessageService().getMessagesByUserId(
+            userId: authProvider.user.id,
           ),
-        ),
-      );
+          builder: (context, snapshot) {
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return emptyChat();
+            }
+
+            return snapshot.hasData
+                ? Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      color: backgroundColor3,
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: defaultMargin,
+                        ),
+                        children: [
+                          const SizedBox(
+                            height: 13,
+                          ),
+                          ChatTile(
+                            message: snapshot.data![snapshot.data!.length - 1],
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                : emptyChat();
+          });
     }
 
     return Column(

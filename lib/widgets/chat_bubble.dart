@@ -37,8 +37,8 @@ class ChatBubble extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    'assets/image_shoes.png',
+                  child: Image.network(
+                    product.galleries[0].url,
                     width: 70,
                   ),
                 ),
@@ -50,14 +50,14 @@ class ChatBubble extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'COURT VISION 2.0 SHOES',
+                        product.name,
                         style: primaryTextStyle,
                       ),
                       const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        '\$58.17',
+                        '\$${product.price}',
                         style: priceTextStyle.copyWith(
                           fontWeight: medium,
                         ),
